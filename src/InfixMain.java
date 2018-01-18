@@ -42,9 +42,9 @@ public class InfixMain {
         });
         panel.add(submitButton);
 
+        window.getRootPane().setDefaultButton(submitButton);
         window.setSize(500, 175);
         window.setVisible(true);
-
     }
 
     private void submitButton() {

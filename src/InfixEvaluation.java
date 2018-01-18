@@ -40,9 +40,6 @@ public class InfixEvaluation {
         while (!operatorStack.empty() && operandStack.size() > 1) {
             operandStack.push(evalOperation(operandStack.pop(), operandStack.pop(), operatorStack.pop()));
         }
-
-        System.out.println("\nOriginal Expression: " + expression);
-        System.out.println("Final Result:  " + operandStack.peek());
         return operandStack.pop();
     }
 
