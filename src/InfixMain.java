@@ -1,16 +1,14 @@
 import javax.swing.*;
-
-/**
- * Your program is only expected to perform correctly on syntactically correct infix expressions
- * that contain integer operands and the four arithmetic operators + - * /. It should not,
- * however, require spaces between tokens. The usual precedence rules apply. The division
- * performed should be integer division. A check should be made for division by zero. Should the
- * expression contain division by zero, a checked exception DivideByZero should be thrown by
- * the method that performs the evaluation and caught in the main class, where a JOptionPane
- * window should be displayed containing an error message.
- */
+import java.awt.event.ActionEvent;
 
 public class InfixMain {
+
+    private JTextField inputField, resultField;
+
+    public static void main(String[] args) {
+        InfixMain infix = new InfixMain();
+        infix.instantiateGUI();
+    }
 
     private void instantiateGUI() {
         JFrame window = new JFrame("Infix Expression Evaluator");
@@ -27,17 +25,21 @@ public class InfixMain {
         resultLabel.setBounds(50, 100, resultLabel.getPreferredSize().width, resultLabel.getPreferredSize().height);
         panel.add(resultLabel);
 
-        JTextField inputField = new JTextField("", 20);
+        inputField = new JTextField("", 20);
         inputField.setBounds(175, 5, inputField.getPreferredSize().width, inputField.getPreferredSize().height);
         panel.add(inputField);
 
-        JTextField resultField = new JTextField("", 20);
+        resultField = new JTextField("", 20);
         resultField.setBounds(125, 100, resultField.getPreferredSize().width, resultField.getPreferredSize().height);
         panel.add(resultField);
 
         JButton submitButton = new JButton("Evaluate");
-        submitButton.setBounds(200,50, submitButton.getPreferredSize().width, submitButton.getPreferredSize().height);
-        //TODO: Add actionListener
+        submitButton.setBounds(200, 50, submitButton.getPreferredSize().width, submitButton.getPreferredSize().height);
+        submitButton.addActionListener((ActionEvent e) -> {
+            if (!inputField.getText().equals("")) {
+                submitButton();
+            }
+        });
         panel.add(submitButton);
 
         window.setSize(500, 175);
@@ -45,12 +47,9 @@ public class InfixMain {
 
     }
 
-//    private void submitButton() {
-//
-//    }
-
-    public static void main(String[] args) {
-        InfixMain infix = new InfixMain();
-        infix.instantiateGUI();
+    private void submitButton() {
+        InfixEvaluation infixCalc = new InfixEvaluation();
+        int result = infixCalc.evaluate(inputField.getText());
+        resultField.setText("" + result);
     }
 }
