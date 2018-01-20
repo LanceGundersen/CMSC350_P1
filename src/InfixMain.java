@@ -48,8 +48,8 @@ public class InfixMain {
     }
 
     private void submitButton() {
-        InfixEvaluation infixCalc = new InfixEvaluation();
-        int result = infixCalc.evaluate(inputField.getText());
+        InfixEvaluation infixEvaluation = new InfixEvaluation();
+        int result = infixEvaluation.InfixEvaluation(inputField.getText());
         resultField.setText("" + result);
     }
 }

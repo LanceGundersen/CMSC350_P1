@@ -1,19 +1,17 @@
 import java.util.Stack;
 import java.util.StringTokenizer;
+import static java.lang.Math.abs;
 
-public class InfixEvaluation {
+class InfixEvaluation {
 
-    private Stack<String> operatorStack;
-    private Stack<Integer> operandStack;
+    private Stack<String> operatorStack = new Stack<>();
+    private Stack<Integer> operandStack = new Stack<>();
 
-    InfixEvaluation() {
-        operatorStack = new Stack<>();
-        operandStack = new Stack<>();
-    }
+    // This method is not a constructor.
+    public int InfixEvaluation(String inputExpression) {
 
-    public int evaluate(String expression) {
         StringTokenizer tokenSplitter = new StringTokenizer(
-                (expression.replaceAll("\\s+", "")), "()+-*/", true);
+                (inputExpression.replaceAll("\\s+", "")), "()+-*/", true);
 
         while (tokenSplitter.hasMoreTokens()) {
             String token = tokenSplitter.nextToken();
@@ -49,7 +47,7 @@ public class InfixEvaluation {
             case "+":
                 return a + b;
             case "-":
-                return Math.abs(a - b);     //Unsigned subtraction
+                return abs(a - b);
             case "*":
                 return a * b;
             case "/":
@@ -59,14 +57,16 @@ public class InfixEvaluation {
                     throw new DivideByZeroException();
                 }
         }
-        return -1;
+        return 0;
     }
 
     private boolean isOperator(String token) {
-        return token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/");
+        String VALID_OPERATORS = "+-*/";
+        return VALID_OPERATORS.contains(token);
     }
 
     private boolean hasPrecedence(String a, String b) {
         return !b.equals("(") && !b.equals(")") && !((a.equals("*") || a.equals("/")) && (b.equals("+") || b.equals("-")));
     }
+
 }
