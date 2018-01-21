@@ -2,6 +2,45 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 import static java.lang.Math.abs;
 
+/*+----------------------------------------------------------------------
+ ||
+ ||  Class InfixEvaluation
+ ||
+ ||         Author:  Lance Gundersen
+ ||
+ ||        Purpose:  Split the inputted infix string into tokens and
+ ||                  evaluate based on precedence and operator.
+ ||
+ ||  Inherits From:  None
+ ||
+ ||     Interfaces:  None
+ ||
+ |+-----------------------------------------------------------------------
+ ||
+ ||      Constants:  None
+ ||
+ |+-----------------------------------------------------------------------
+ ||
+ ||   Constructors:  None
+ ||
+ ||  Class Methods:  InfixEvaluation takes one string argument which is
+ ||                  the inputted string. It returns the two stacks for
+ ||                  operator and operands.
+ ||
+ ||                  evalOperation takes two integer arguments and a string
+ ||                  for the operator. It returns calculated answer.
+ ||
+ ||                  isOperator takes a string of the operator and returns
+ ||                  a boolean to check if its a valid operator or not.
+ ||
+ ||                  hasPrecedence takes two strings and returns a boolean
+ ||                  to see which string has precedence over the other.
+ ||
+ ||
+ ||  Inst. Methods:  None
+ ||
+ ++-----------------------------------------------------------------------*/
+
 class InfixEvaluation {
 
     private Stack<String> operatorStack = new Stack<>();
@@ -41,7 +80,7 @@ class InfixEvaluation {
         return operandStack.pop();
     }
 
-    private int evalOperation(int a, int b, String operator) throws DivideByZeroException {
+    private int evalOperation(int a, int b, String operator) {
 
         switch (operator) {
             case "+":

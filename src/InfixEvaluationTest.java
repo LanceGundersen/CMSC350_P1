@@ -123,21 +123,21 @@ public class InfixEvaluationTest {
     void testPrecedence() {
         assertAll(
                 () -> {
-                    // Test 1: Simple Precedence with Parentheses
+                    // Test 1: Simple Precedence
                     String expressionToEvaluate = "15 * 3 / 2 + 5 - 2";
                     int expectedEvaluation = 25;
                     int actualEvaluation = InfixTest.InfixEvaluation(expressionToEvaluate);
                     assertEquals(expectedEvaluation, actualEvaluation);
                 },
                 () -> {
-                    // Test 2: Simple Precedence with Parentheses
+                    // Test 2: Simple Precedence
                     String expressionToEvaluate = "15 / 5 * 2 + 43 - 8";
                     int expectedEvaluation = 41;
                     int actualEvaluation = InfixTest.InfixEvaluation(expressionToEvaluate);
                     assertEquals(expectedEvaluation, actualEvaluation);
                 },
                 () -> {
-                    // Test 3: Simple Precedence with Parentheses
+                    // Test 3: Simple Precedence
                     String expressionToEvaluate = "15 / 3 * 2 + 5 - 2";
                     int expectedEvaluation = 13;
                     int actualEvaluation = InfixTest.InfixEvaluation(expressionToEvaluate);
